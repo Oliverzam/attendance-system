@@ -34,7 +34,7 @@ Sistema multiplataforma para la gestión de asistencia de personal, compuesto po
 |---|---|
 | 📍 Geofencing | Validación de ubicación GPS con radio configurable en metros |
 | 🔔 Notificaciones push | Envío en tiempo real via Firebase Cloud Messaging |
-| 👥 Gestión de grupos | Organización de empleados en grupos con inscripción masiva a eventos |
+| 👥 Gestión de grupos | Organización de empleados con inscripción masiva a eventos |
 | 📅 Eventos | Registro de asistencia a eventos especiales con GPS |
 | ⏰ Horarios | Turnos configurables con tolerancia de tardanza |
 | 📊 Reportes | KPIs de asistencia, puntualidad y horas trabajadas |
@@ -72,44 +72,6 @@ Sistema multiplataforma para la gestión de asistencia de personal, compuesto po
 
 ---
 
-## 📡 Backend
-
-**Repositorio:** [`attendance-system-api`](https://github.com/Oliverzam/attendance-system-api)
-
-### Stack
-- **Runtime:** Node.js + Express.js
-- **ORM:** Sequelize v6 + PostgreSQL
-- **Auth:** JWT + bcryptjs
-- **Notificaciones:** Firebase Admin SDK (FCM)
-- **Contenedores:** Docker + docker-compose
-- **Geolocalización:** Fórmula Haversine + OpenStreetMap Nominatim
-
-### Módulos de la API
-
-| Módulo | Endpoints | Descripción |
-|---|---|---|
-| Auth | `/api/auth` | Login con cédula o email |
-| Empleados | `/api/empleados` | CRUD + roles y cargos |
-| Asistencias | `/api/asistencias` | Entrada, salida, geofencing |
-| Horarios | `/api/horarios` | Turnos y asignación |
-| Grupos | `/api/grupos` | Organización de personal |
-| Eventos | `/api/eventos` | Eventos especiales |
-| Lugares | `/api/lugares` | Zonas de geofencing |
-| Notificaciones | `/api/notificaciones` | Push broadcast e individual |
-| Reportes | `/api/asistencias/mi-resumen` | KPIs del empleado |
-
-### Instalación rápida
-
-```bash
-git clone https://github.com/Oliverzam/attendance-system-api
-cd attendance-system-api
-cp .env.example .env
-# Configurar variables en .env
-docker-compose up -d
-```
-
----
-
 ## 💻 Panel Administrativo
 
 **Repositorio:** [`attendance-system-admin`](https://github.com/Oliverzam/attendance-system-admin)
@@ -117,24 +79,31 @@ docker-compose up -d
 ### Stack
 - **Framework:** Angular 21 (standalone components)
 - **UI:** Angular Material 21 + Material 3
-- **Lenguaje:** TypeScript
-- **Gráficas:** Chart.js
-- **Mapas:** Leaflet.js + OpenStreetMap
+- **Gráficas:** Chart.js · **Mapas:** Leaflet.js + OpenStreetMap
 
-### Módulos del panel
+### Screenshots
 
-- 📊 **Dashboard** — métricas en tiempo real con gráficas semanales
-- 👥 **Empleados** — CRUD con asignación de horario y lugar
-- ✅ **Asistencias** — registro con filtros y exportación
-- ⏰ **Horarios** — gestión de turnos con horario de almuerzo
-- 👫 **Grupos** — organización y asignación masiva a eventos
-- 📍 **Lugares** — zonas de geofencing con mapa interactivo
-- 📅 **Eventos** — gestión con inscripción individual y por grupos
-- 🔔 **Notificaciones** — broadcast e individual con historial
-- 📈 **Reportes** — ranking de asistencia con barras de progreso
+| Dashboard | Empleados |
+|---|---|
+| ![Dashboard](docs/screenshots/Dashboard.png) | ![Empleados](docs/screenshots/Empleado.png) |
+
+| Horarios | Lugares |
+|---|---|
+| ![Horarios](docs/screenshots/Horario.png) | ![Lugares](docs/screenshots/Lugares.png) |
+
+| Grupos | Eventos |
+|---|---|
+| ![Grupos](docs/screenshots/Grupos.png) | ![Eventos](docs/screenshots/Eventos.png) |
+
+| Reportes | Notificaciones |
+|---|---|
+| ![Reportes](docs/screenshots/Reportes.png) | ![Notificaciones](docs/screenshots/Notificaciones.png) |
+
+### Módulos
+- 📊 Dashboard · 👥 Empleados · ✅ Asistencias · ⏰ Horarios
+- 👫 Grupos · 📍 Lugares · 📅 Eventos · 🔔 Notificaciones · 📈 Reportes
 
 ### Instalación
-
 ```bash
 git clone https://github.com/Oliverzam/attendance-system-admin
 cd attendance-system-admin
@@ -151,23 +120,19 @@ ng serve
 ### Stack
 - **Framework:** Flutter (Dart)
 - **Notificaciones:** Firebase Cloud Messaging
-- **Mapas:** flutter_map + OpenStreetMap
-- **Calendario:** table_calendar
-- **Geolocalización:** geolocator
+- **Mapas:** flutter_map + OpenStreetMap · **Calendario:** table_calendar
 
-### Pantallas
+### Screenshots
 
-| Pantalla | Descripción |
-|---|---|
-| 🔐 Login | Autenticación con cédula o email |
-| 🏠 Home | Perfil, estado del día y accesos rápidos |
-| ✅ Asistencia | Cronómetro, mapa GPS, flujo entrada/almuerzo/salida |
-| 📅 Eventos | Calendario con eventos inscritos y registro de asistencia |
-| 📊 Reportes | KPIs personales con barras de progreso |
-| 🔔 Notificaciones | Historial con swipe para archivar |
+| Login | Home | Asistencia |
+|---|---|---|
+| ![Login](docs/screenshots/LoginMovil.png) | ![Home](docs/screenshots/HomeMovil.png) | ![Asistencia](docs/screenshots/AsistenciaMovil.png) |
+
+| Eventos | Reportes | Notificaciones |
+|---|---|---|
+| ![Eventos](docs/screenshots/EventosMovil.png) | ![Reportes](docs/screenshots/ReportesMovil.png) | ![Mapa](docs/screenshots/MapaMovil.png) |
 
 ### Instalación
-
 ```bash
 git clone https://github.com/Oliverzam/attendance-system-app
 cd attendance-system-app
@@ -177,12 +142,44 @@ flutter run
 
 ---
 
+## 📡 Backend
+
+**Repositorio:** [`attendance-system-api`](https://github.com/Oliverzam/attendance-system-api)
+
+### Stack
+- **Runtime:** Node.js + Express.js
+- **ORM:** Sequelize v6 + PostgreSQL
+- **Auth:** JWT + bcryptjs · **Notificaciones:** Firebase Admin SDK
+
+### Módulos de la API
+
+| Módulo | Prefix | Descripción |
+|---|---|---|
+| Auth | `/api/auth` | Login con cédula o email |
+| Empleados | `/api/empleados` | CRUD + roles y cargos |
+| Asistencias | `/api/asistencias` | Entrada, salida, geofencing |
+| Horarios | `/api/horarios` | Turnos y asignación |
+| Grupos | `/api/grupos` | Organización de personal |
+| Eventos | `/api/eventos` | Eventos especiales |
+| Lugares | `/api/lugares` | Zonas de geofencing |
+| Notificaciones | `/api/notificaciones` | Push broadcast e individual |
+
+### Instalación
+```bash
+git clone https://github.com/Oliverzam/attendance-system-api
+cd attendance-system-api
+cp .env.example .env
+docker-compose up -d
+```
+
+---
+
 ## 👨‍💻 Autor
 
-**Oliver Zamora Fajardo**
+**Oliver Zamora Fajardo**  
 Ingeniero en Software — Universidad Técnica del Norte
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Oliver%20Zamora-blue?style=flat&logo=linkedin)](https://linkedin.com/in/oliver-zamora-fajardo)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Oliver%20Zamora-blue?style=flat&logo=linkedin)](https://linkedin.com/in/oliver-zamora-fajardo-5b653629b)
 [![GitHub](https://img.shields.io/badge/GitHub-Oliverzam-black?style=flat&logo=github)](https://github.com/Oliverzam)
 📧 oliverzafa05@gmail.com
 
